@@ -8,11 +8,12 @@
 
 1. ### [Pose Detection][1] ([MoveNetLighting][2])
 
-[1]:src/main/kotlin/live_image_recognition_and_object_detection/pose_detection
+   [1]:src/main/kotlin/live_image_recognition_and_object_detection/pose_detection
+   [<img alt="Watch The Video" height="420" src="assets/movenetlightingdemo.gif" width="500"/>]
 
-[2]:src/main/kotlin/live_image_recognition_and_object_detection/pose_detection/MoveNetLighting.kt
+   [2]:src/main/kotlin/live_image_recognition_and_object_detection/pose_detection/MoveNetLighting.kt
 
-2. ### [Object Detection][3] ([SSDMobileNetV1][4], [SSD][5])
+3. ### [Object Detection][3] ([SSDMobileNetV1][4], [SSD][5])
 
    [3]:src/main/kotlin/live_image_recognition_and_object_detection/object_detection
 

@@ -35,16 +35,7 @@ fun main(){
             frame.showImage(webcam.image.drawBoxesForOD(ssd.detectObjects(webcam.image)))
         }.run(::println)
     }
-    {
-        3.726953700+
-                3.737476900+
-                4.025866100+
-                3.786931400+
-                3.750497100+
-                3.824275600+
-                3.822712100+
-                3.914662600
-    }
+
 
 }
 

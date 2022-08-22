@@ -23,7 +23,7 @@ fun main(){
     val moveNetL = modelHub[
     ONNXModels.PoseDetection.MoveNetMultiPoseLighting]
     println(Webcam.getWebcams())
-    val webcam = Webcam.getWebcams()[2]
+    val webcam = Webcam.getWebcams()[0] //TODO Set to default webcam
     webcam.viewSize = WebcamResolution.VGA.size
     webcam.open()
     val frame = ImageFrame(webcam.viewSize.width, webcam.viewSize.height)
