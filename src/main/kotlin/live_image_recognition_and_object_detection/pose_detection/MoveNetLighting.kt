@@ -1,6 +1,7 @@
 package live_image_recognition_and_object_detection.pose_detection
 
 import com.github.sarxos.webcam.Webcam
+import com.github.sarxos.webcam.WebcamResolution
 import drawPoses
 import live_image_recognition_and_object_detection.ImageFrame
 import org.jetbrains.kotlinx.dl.api.inference.loaders.ONNXModelHub
@@ -21,8 +22,9 @@ fun main(){
     )
     val moveNetL = modelHub[
     ONNXModels.PoseDetection.MoveNetMultiPoseLighting]
-
-    val webcam = Webcam.getWebcams()[1]
+    println(Webcam.getWebcams())
+    val webcam = Webcam.getWebcams()[2]
+    webcam.viewSize = WebcamResolution.VGA.size
     webcam.open()
     val frame = ImageFrame(webcam.viewSize.width, webcam.viewSize.height)
     while(webcam.isOpen){
@@ -35,6 +37,6 @@ fun main(){
 }
 
 
-fun MultiPoseDetectionModel.detectPoses(buff: BufferedImage, conf: Double = 5e-3): MultiPoseDetectionResult {
+fun MultiPoseDetectionModel.detectPoses(buff: BufferedImage, conf: Double = 5e-1): MultiPoseDetectionResult {
     return detectPoses(buff.toFloatArray(ColorMode.BGR,  256 to 256), conf.toFloat())
 }

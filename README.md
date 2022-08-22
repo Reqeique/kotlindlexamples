@@ -6,11 +6,11 @@
 
 - ## Live Image Recongnition and Object Detection
 
-1. ### [Pose Detection][1] ([MoveNetLightning][2])
+1. ### [Pose Detection][1] ([MoveNetLighting][2])
 
 [1]:src/main/kotlin/live_image_recognition_and_object_detection/pose_detection
 
-[2]:src/main/kotlin/live_image_recognition_and_object_detection/pose_detection/MoveNetLightning.kt
+[2]:src/main/kotlin/live_image_recognition_and_object_detection/pose_detection/MoveNetLighting.kt
 
 2. ### [Object Detection][3] ([SSDMobileNetV1][4], [SSD][5])
 
@@ -22,8 +22,11 @@
 
 ### CPU Only Bench (i5-8250u)
 
+
 | Models             | Frequency(hZ) | Frequency(hZ) |       
 |--------------------|---------------|---------------|
 |                    | On Battery    | AC            |
-| `MoveNetLightning` | ~9.5 hZ       | ~ 12.5 hZ     |
-| `SSDMobileNetV1`   |               |
+| `MoveNetLightning` | ~9.5 hZ       | ~12.5 hZ      |
+| `SSDMobileNetV1`   | ~4.04 hZ      | ~5.293 hZ     |
+ | `SSD`              | ~0.1 hZ       | ~0.2 hZ       |
+ 

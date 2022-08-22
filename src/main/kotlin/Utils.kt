@@ -1,3 +1,4 @@
+import org.jetbrains.kotlinx.dl.api.inference.objectdetection.DetectedObject
 import org.jetbrains.kotlinx.dl.api.inference.posedetection.DetectedPose
 import org.jetbrains.kotlinx.dl.dataset.image.ColorMode
 import org.jetbrains.kotlinx.dl.dataset.image.ImageConverter
@@ -6,6 +7,7 @@ import org.jetbrains.kotlinx.dl.dataset.preprocessor.image.InterpolationType
 import org.jetbrains.kotlinx.dl.dataset.preprocessor.image.RenderingSpeed
 import java.awt.*
 import java.awt.image.BufferedImage
+import kotlin.math.abs
 
 fun BufferedImage.drawPoses(detectedPoses: List<DetectedPose>): BufferedImage {
     val size = this
@@ -84,4 +86,64 @@ fun BufferedImage.swapColorMode(colorMode: ColorMode): BufferedImage{
     return result
 
 }
+
+fun BufferedImage.drawBoxesForOD(detections: List<DetectedObject>): BufferedImage{
+    val image = this
+    val g: Graphics2D = this.graphics as Graphics2D
+    val stroke = 2
+    g.stroke = BasicStroke(stroke.toFloat())
+    g.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON)
+    val imageWidth: Int = image.width
+    val imageHeight: Int = image.height
+    detections.forEach {
+        val className: String = it.classLabel
+
+        g.paint = Color.BLACK
+        val top = it.yMin * image.height
+        val left = it.xMin * image.width
+        val bottom = it.yMax * image.height
+        val right = it.xMax * image.width
+        //   if (abs(top - bottom) > 300 || abs(right - left) > 300) return@forEach
+        val y = top
+        val x = left
+
+        g.drawRect(
+            x.toInt(), y.toInt(), abs(right - left).toInt(), abs(top - bottom).toInt()
+        )
+
+        drawText(g, className, x.toInt(), y.toInt(), stroke, 4)
+
+    }
+
+    g.dispose()
+    return this
+}
+private fun drawText(g: Graphics2D, text: String, x0: Int, y0: Int, stroke: Int, padding: Int) {
+    {
+        222.867+
+                183.971700+
+                235.461100+
+                167.993600+
+                188.250600+
+                173.749200+
+                191.492600+
+                187.426200+
+                168.887700+
+                167.564300
+
+    }
+    var x = x0
+    var y = y0
+    val metrics = g.fontMetrics
+    x += stroke / 2
+    y += stroke / 2
+    val width = metrics.stringWidth(text) + padding * 2 - stroke / 2
+    val height = metrics.height + metrics.descent
+    val ascent = metrics.ascent
+    val background = Rectangle(x, y, width, height)
+    g.fill(background)
+    g.paint = Color.WHITE
+    g.drawString(text, x + padding, y + ascent)
+}
+
 fun BufferedImage.toFloatArray(colorMode: ColorMode, dims: Pair<Int, Int>) = ImageConverter.toRawFloatArray(this.swapColorMode(colorMode).resize(dims.first, dims.second))
