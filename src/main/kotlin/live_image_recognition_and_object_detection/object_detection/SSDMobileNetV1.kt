@@ -24,10 +24,14 @@ fun main(){
     val modelHub = ONNXModelHub(
         File("models\\onnx_pretrained_model")
     )
+
     val ssdMNV1 = modelHub[
             ONNXModels.ObjectDetection.SSDMobileNetV1]
 
-    val webcam = Webcam.getWebcams()[1]
+
+
+    println(Webcam.getWebcams().map { it.name })
+    val webcam = Webcam.getWebcams()[0]
     webcam.viewSize = WebcamResolution.VGA.size
     webcam.open()
     val frame = ImageFrame(webcam.viewSize.width, webcam.viewSize.height)
