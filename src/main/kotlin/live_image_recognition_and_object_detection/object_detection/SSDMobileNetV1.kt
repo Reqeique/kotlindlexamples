@@ -20,7 +20,7 @@ import kotlin.time.ExperimentalTime
 import kotlin.time.measureTime
 
 @OptIn(ExperimentalTime::class)
-fun main(){
+fun main(args: Array<String>){
     val modelHub = ONNXModelHub(
         File("models\\onnx_pretrained_model")
     )
@@ -31,7 +31,7 @@ fun main(){
 
 
     println(Webcam.getWebcams().map { it.name })
-    val webcam = Webcam.getWebcams()[0]
+    val webcam = Webcam.getWebcams()[args.getOrNull(0)?.toIntOrNull() ?: 0]
     webcam.viewSize = WebcamResolution.VGA.size
     webcam.open()
     val frame = ImageFrame(webcam.viewSize.width, webcam.viewSize.height)

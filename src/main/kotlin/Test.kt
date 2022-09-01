@@ -24,5 +24,5 @@ fun main(){
 //    model.printSummary()
 //    model.predictSoftly(mk[2.5f, -2.1f].toFloatArray()).toList().apply(::println)
 //
-
+      Sequential
 }

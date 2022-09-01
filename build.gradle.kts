@@ -27,5 +27,22 @@ configurations.implementation {
     exclude("org.bytedeco", "javacpp")
 }
 tasks.withType<KotlinCompile> {
+
     kotlinOptions.jvmTarget = "11"
+}
+//tasks.create("SSD")
+
+
+task<JavaExec>("runtMoveNetLighting")  {
+   main = "live_image_recognition_and_object_detection.pose_detection.MoveNetLightingKt"
+   classpath = java.sourceSets["main"].runtimeClasspath
+}
+task<JavaExec>("runSSD"){
+    main = "live_image_recognition_and_object_detection.object_detection.SSDMobileNetV1Kt"
+    classpath = java.sourceSets["main"].runtimeClasspath
+}
+task<JavaExec>("runSSDMobileNetV1"){
+    main = "live_image_recognition_and_object_detection.object_detection.SSDKt"
+    classpath = java.sourceSets["main"].runtimeClasspath
+
 }
