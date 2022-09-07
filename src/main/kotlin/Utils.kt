@@ -1,3 +1,4 @@
+import org.jetbrains.kotlinx.dl.api.inference.loaders.ONNXModelHub
 import org.jetbrains.kotlinx.dl.api.inference.objectdetection.DetectedObject
 import org.jetbrains.kotlinx.dl.api.inference.posedetection.DetectedPose
 import org.jetbrains.kotlinx.dl.dataset.image.ColorMode
@@ -7,6 +8,7 @@ import org.jetbrains.kotlinx.dl.dataset.preprocessor.image.InterpolationType
 import org.jetbrains.kotlinx.dl.dataset.preprocessor.image.RenderingSpeed
 import java.awt.*
 import java.awt.image.BufferedImage
+import java.io.File
 import kotlin.math.abs
 
 fun BufferedImage.drawPoses(detectedPoses: List<DetectedPose>): BufferedImage {
@@ -145,5 +147,9 @@ private fun drawText(g: Graphics2D, text: String, x0: Int, y0: Int, stroke: Int,
     g.paint = Color.WHITE
     g.drawString(text, x + padding, y + ascent)
 }
+
+val modelHub = ONNXModelHub(
+    File("models\\onnx_pretrained_model")
+)
 
 fun BufferedImage.toFloatArray(colorMode: ColorMode, dims: Pair<Int, Int>) = ImageConverter.toRawFloatArray(this.swapColorMode(colorMode).resize(dims.first, dims.second))

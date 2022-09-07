@@ -1,9 +1,10 @@
-package live_image_recognition_and_object_detection.pose_detection
+package live_cv.pose_detection
 
 import com.github.sarxos.webcam.Webcam
 import com.github.sarxos.webcam.WebcamResolution
 import drawPoses
-import live_image_recognition_and_object_detection.ImageFrame
+import live_cv.ImageFrame
+import modelHub
 import org.jetbrains.kotlinx.dl.api.inference.loaders.ONNXModelHub
 import org.jetbrains.kotlinx.dl.api.inference.onnx.ONNXModels
 import org.jetbrains.kotlinx.dl.api.inference.onnx.posedetection.MultiPoseDetectionModel
@@ -18,11 +19,10 @@ import kotlin.time.measureTime
 @OptIn(ExperimentalTime::class)
 fun main(args: Array<String>){
     print(args.toList())
-    val modelHub = ONNXModelHub(
-        File("models\\onnx_pretrained_model")
-    )
+
     val moveNetL = modelHub[
     ONNXModels.PoseDetection.MoveNetMultiPoseLighting]
+
     println(Webcam.getWebcams())
     val webcam = Webcam.getWebcams()[args.getOrNull(0)?.toIntOrNull() ?: 0] //TODO Set to default webcam
     webcam.viewSize = WebcamResolution.VGA.size

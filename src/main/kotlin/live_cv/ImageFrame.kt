@@ -1,4 +1,4 @@
-package live_image_recognition_and_object_detection
+package live_cv
 
 import java.awt.BorderLayout
 import java.awt.Dimension

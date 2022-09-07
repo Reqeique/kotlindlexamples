@@ -34,15 +34,20 @@ tasks.withType<KotlinCompile> {
 
 
 task<JavaExec>("runtMoveNetLighting")  {
-   main = "live_image_recognition_and_object_detection.pose_detection.MoveNetLightingKt"
+   main = "live_cv.pose_detection.MoveNetLightingKt"
    classpath = java.sourceSets["main"].runtimeClasspath
 }
 task<JavaExec>("runSSD"){
-    main = "live_image_recognition_and_object_detection.object_detection.SSDMobileNetV1Kt"
+    main = "live_cv.object_detection.SSDMobileNetV1Kt"
     classpath = java.sourceSets["main"].runtimeClasspath
 }
 task<JavaExec>("runSSDMobileNetV1"){
-    main = "live_image_recognition_and_object_detection.object_detection.SSDKt"
+    main = "live_cv.object_detection.SSDKt"
+    classpath = java.sourceSets["main"].runtimeClasspath
+
+}
+task<JavaExec>("runEfficientNetB4"){
+    main = "live_cv.object_detection.EfficientNetB4Kt"
     classpath = java.sourceSets["main"].runtimeClasspath
 
 }

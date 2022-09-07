@@ -1,13 +1,13 @@
-package live_image_recognition_and_object_detection.object_detection
+package live_cv.object_detection
 
 import com.github.sarxos.webcam.Webcam
 import com.github.sarxos.webcam.WebcamResolution
 import drawBoxesForOD
-import live_image_recognition_and_object_detection.ImageFrame
+import live_cv.ImageFrame
+import modelHub
 import org.jetbrains.kotlinx.dl.api.inference.loaders.ONNXModelHub
 import org.jetbrains.kotlinx.dl.api.inference.objectdetection.DetectedObject
 import org.jetbrains.kotlinx.dl.api.inference.onnx.ONNXModels
-import org.jetbrains.kotlinx.dl.api.inference.onnx.objectdetection.SSDMobileNetV1ObjectDetectionModel
 import org.jetbrains.kotlinx.dl.api.inference.onnx.objectdetection.SSDObjectDetectionModel
 import org.jetbrains.kotlinx.dl.dataset.image.ColorMode
 import toFloatArray
@@ -18,9 +18,7 @@ import kotlin.time.measureTime
 
 @OptIn(ExperimentalTime::class)
 fun main(args: Array<String>){
-    val modelHub = ONNXModelHub(
-        File("models\\onnx_pretrained_model")
-    )
+
     val ssd = modelHub[
           ONNXModels.ObjectDetection.SSD]
 
