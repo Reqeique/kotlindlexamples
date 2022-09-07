@@ -13,7 +13,7 @@
 
    [2]:src/main/kotlin/live_cv/pose_detection/MoveNetLighting.kt
 
-2. #### [Object Detection][3] ([SSDMobileNetV1][4], [SSD][5], [EfficientNetB4][6] )
+2. #### [Object Detection][3] ([SSDMobileNetV1][4], [SSD][5], [EfficientNetB4][6], [Resnet18V2][7])
 
    [1]:src/main/kotlin/live_cv/pose_detection
    <img alt="Watch The Video" height="420" src="assets/ssdmobilenetdemo.gif" width="420"  style="border-radius:1.5%"/>
@@ -26,6 +26,8 @@
 
 [6]:src/main/kotlin/live_cv/object_detection/EfficientNetB4.kt
 
+[7]:src/main/kotlin/live_cv/object_detection/ResNet18v2.kt
+
 3. #### Word Detection (Coming Soon)
 
 4. #### Face Detection (Coming Soon)
@@ -37,15 +39,17 @@
 
 ----
 
+
 - #### Intel® Core™ i5-8250U (CPU only)
 
-| Models             | Frequency(Hz) | Frequency(Hz) |       
-|--------------------|---------------|---------------|
-|                    | On Battery    | AC            |
-| `MoveNetLighting`  | ~9.5 Hz       | ~12.5 Hz      |
-| `SSDMobileNetV1`   | ~4.04 Hz      | ~5.293 Hz     |
-| `SSD`              | ~0.1 Hz       | ~0.2 Hz       |
-| `EfficientNetB4`   | ~2 Hz         | ~3 Hz         |
+| Models            | Frequency(Hz) | Frequency(Hz) |       
+|-------------------|---------------|---------------|
+|                   | On Battery    | AC            |
+| `MoveNetLighting` | ~9.5 Hz       | ~12.5 Hz      |
+| `SSDMobileNetV1`  | ~4.04 Hz      | ~5.293 Hz     |
+| `SSD`             | ~0.1 Hz       | ~0.2 Hz       |
+| `EfficientNetB4`  | ~2 Hz         | ~3 Hz         |
+| `Resnet18v2`      | ~4.472595 Hz  | ~6.7 Hz       |
 
 ### Run the Classes from Gradle CLI
 
@@ -60,6 +64,8 @@
 `runSSDMobileNetV1`
 \
 `runEfficientNetB4`
+\
+`runResnet18v2`
 
 #### Id
 

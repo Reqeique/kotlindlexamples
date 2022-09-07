@@ -49,5 +49,8 @@ task<JavaExec>("runSSDMobileNetV1"){
 task<JavaExec>("runEfficientNetB4"){
     main = "live_cv.object_detection.EfficientNetB4Kt"
     classpath = java.sourceSets["main"].runtimeClasspath
-
+}
+task<JavaExec>("runResNet18v2"){
+    main = "live_cv.object_detection.ResNet18v2Kt"
+    classpath = java.sourceSets["main"].runtimeClasspath
 }
