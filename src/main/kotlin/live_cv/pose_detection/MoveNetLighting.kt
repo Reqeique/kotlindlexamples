@@ -5,14 +5,14 @@ import com.github.sarxos.webcam.WebcamResolution
 import drawPoses
 import live_cv.ImageFrame
 import modelHub
-import org.jetbrains.kotlinx.dl.api.inference.loaders.ONNXModelHub
+
 import org.jetbrains.kotlinx.dl.api.inference.onnx.ONNXModels
 import org.jetbrains.kotlinx.dl.api.inference.onnx.posedetection.MultiPoseDetectionModel
 import org.jetbrains.kotlinx.dl.api.inference.posedetection.MultiPoseDetectionResult
 import org.jetbrains.kotlinx.dl.dataset.image.ColorMode
 import toFloatArray
 import java.awt.image.BufferedImage
-import java.io.File
+
 import kotlin.time.ExperimentalTime
 import kotlin.time.measureTime
 
@@ -36,7 +36,6 @@ fun main(args: Array<String>){
     }
 
 }
-
 
 fun MultiPoseDetectionModel.detectPoses(buff: BufferedImage, conf: Double = 5e-1): MultiPoseDetectionResult {
     return detectPoses(buff.toFloatArray(ColorMode.BGR,  256 to 256), conf.toFloat())

@@ -10,6 +10,7 @@ import java.awt.*
 import java.awt.image.BufferedImage
 import java.io.File
 import kotlin.math.abs
+import kotlin.math.exp
 
 fun BufferedImage.drawPoses(detectedPoses: List<DetectedPose>): BufferedImage {
     val size = this
@@ -151,5 +152,11 @@ private fun drawText(g: Graphics2D, text: String, x0: Int, y0: Int, stroke: Int,
 val modelHub = ONNXModelHub(
     File("models\\onnx_pretrained_model")
 )
+object Math {
+    fun sigmoid(float: Float): Float{
+        return  1/(1 + exp(-float))
+    }
+}
+
 
 fun BufferedImage.toFloatArray(colorMode: ColorMode, dims: Pair<Int, Int>) = ImageConverter.toRawFloatArray(this.swapColorMode(colorMode).resize(dims.first, dims.second))

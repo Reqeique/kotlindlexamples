@@ -30,26 +30,33 @@
 
 3. #### Word Detection (Coming Soon)
 
+
 4. #### Face Detection (Coming Soon)
 
 
-- ### NLP (Coming Soon)
-
-### Bench
+- ### NLP 
+1. #### [Sentiment Analysis][1] ([DistilBertUCSST2EN][2])
+   
+   [1]:src/main/kotlin/nlp/sentiment_analysis
+   [2]:src/main/kotlin/nlp/sentiment_analysis/DistilBertUCSST2EN.kt
+### Bench (Runtime)
 
 ----
 
 
 - #### Intel® Core™ i5-8250U (CPU only)
 
-| Models            | Frequency(Hz) | Frequency(Hz) |       
-|-------------------|---------------|---------------|
-|                   | On Battery    | AC            |
-| `MoveNetLighting` | ~9.5 Hz       | ~12.5 Hz      |
-| `SSDMobileNetV1`  | ~4.04 Hz      | ~5.293 Hz     |
-| `SSD`             | ~0.1 Hz       | ~0.2 Hz       |
-| `EfficientNetB4`  | ~2 Hz         | ~3 Hz         |
-| `Resnet18v2`      | ~4.472595 Hz  | ~6.7 Hz       |
+
+| Models                    | Frequency(Hz) | Frequency(Hz) |       
+|---------------------------|---------------|---------------|
+|                           | On Battery    | AC            |
+| `MoveNetLighting(CV)`     | ~9.5 Hz       | ~12.5 Hz      |
+| `SSDMobileNetV1(CV)`      | ~4.04 Hz      | ~5.293 Hz     |
+| `SSD(CV)`                 | ~0.1 Hz       | ~0.2 Hz       |
+| `EfficientNetB4(CV)`      | ~2 Hz         | ~3 Hz         |
+| `Resnet18v2(CV)`          | ~4.472595 Hz  | ~6.7 Hz       |
+|                           |               |               |
+| `DistilBertUCSST2EN(NLP)` | ~0.05 Hz      | ~0.12 Hz      |
 
 ### Run the Classes from Gradle CLI
 
@@ -65,11 +72,12 @@
 \
 `runEfficientNetB4`
 \
-`runResnet18v2`
-
+`runResNet18v2`
+\
+`runDistilBertUCSST2EN`(doesn't take any argument)
 #### Id
 
-The id that represents the current web cam
+The id used to specify the index of the current web cam (only for live cv)
 
 ```shell
 # gradle task --args id
